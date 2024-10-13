@@ -48,12 +48,17 @@ main {
   font-size: 30px;
   line-height: 48px;
 }
-.wether-app-name {
-  margin-top: 0;
-  font-size: 17px;
+.weather-app-name {
+  position: fixed; /* Stick the element to the viewport */
+  top: 0; /* Move it to the top of the page */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%); /* Adjust for the element's width */
+  font-size: 23px;
   line-height: 70px;
+  font-family: "Pacifico", cursive; /* Calligraphic web font */
+  font-weight: bold;
+  z-index: 1000; /* Ensure it appears on top of other elements */
 }
-
 .wether-app-details {
   font-size: 16px;
   color: rgba(39, 33, 66, 0.4);
