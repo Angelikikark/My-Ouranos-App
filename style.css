@@ -77,8 +77,8 @@ main {
 }
 
 .weather-app-icon {
-  font-size: 70px; /* Adjust emoji size */
-  margin-top: 22px;
+  width: 70px; /* Adjust emoji size */
+  height: 70px;
 }
 
 .weather-app-unit {
