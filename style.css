@@ -49,9 +49,9 @@ main {
   line-height: 48px;
 }
 .wether-app-name {
-  margin: 0;
+  margin-top: 0;
   font-size: 17px;
-  line-height: 48px;
+  line-height: 70px;
 }
 
 .wether-app-details {
