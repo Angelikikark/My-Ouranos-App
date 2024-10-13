@@ -28,15 +28,19 @@
         <div class="ouranos-app-data">
           <div>
             <h1 class="wether-app-name">Welcome to Ouranos App</h1>
-            <h2 class="weather-app-city" id="city">Paris</h2>
+            <h2 class="weather-app-city" id="city"></h2>
             <p class="wether-app-details">
-              Tuesday 14:49, scattered clouds<br />
-              Humidity:<strong> 66%</strong>, Wind:<strong>3.13km/h</strong>
+              <span id="time"></span>,
+              <span id="description"></span>
+              <br />
+              Humidity: <strong id="humidity"></strong>, Wind:
+              <strong id="wind-speed"></strong>
+              >
             </p>
           </div>
           <div class="weather-app-temperature-container">
             <div class="weather-app-icon">🌤️</div>
-            <div class="weather-app-temperature">12</div>
+            <div class="weather-app-temperature" id="temperature"></div>
             <div class="weather-app-unit">°C</div>
           </div>
         </div>
