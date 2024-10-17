@@ -16,29 +16,8 @@ function refreshWeather(response) {
   windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
   temperatureElement.innerHTML = Math.round(temperature);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon" />`;
+
   getForecast(response.data.city);
-}
-
-// Function to get the icon based on the weather condition
-function getWeatherIcon(condition) {
-  const iconMap = {
-    clear:
-      "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
-    cloudy:
-      "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png",
-    rainy: "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain.png",
-    snow: "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow.png",
-  };
-  return iconMap[condition] || iconMap["clear"]; // Default to clear if condition not found
-}
-
-// Function to update the weather icon
-function updateWeatherIcon() {
-  const weatherCondition = weatherData.weatherCondition; // Get the current weather condition
-  const weatherIconElement = document.getElementById("weather-icon");
-  const newIconSrc = getWeatherIcon(weatherCondition); // Get the appropriate icon URL
-
-  weatherIconElement.src = newIconSrc; // Update the image source
 }
 
 function formatDate(date) {
@@ -76,11 +55,17 @@ function handleSearchSubmit(event) {
 
   searchCity(searchInput.value);
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
 
 function getForecast(city) {
   let apiKey = "t7o26f41bc212fa3436aa27360809eab";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apikey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
@@ -111,9 +96,8 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Paris");
-
-displayForecast();
